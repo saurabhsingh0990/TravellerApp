@@ -43,7 +43,7 @@ public class mapActivity extends AppCompatActivity {
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        getMyLocation();
+                        getMyLocation(31.1,77.17);
                     }
 
                     @Override
@@ -58,7 +58,7 @@ public class mapActivity extends AppCompatActivity {
                 }).check();
     }
 
-    public void getMyLocation() {
+    public void getMyLocation(double lati, double longi) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -76,7 +76,7 @@ public class mapActivity extends AppCompatActivity {
                 smf.getMapAsync(new OnMapReadyCallback() {
                     @Override
                     public void onMapReady(GoogleMap googleMap) {
-                        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());//to get your location change lati longi with location.getlatitude, location.getlongitude
                         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("That's You");
                         googleMap.addMarker(markerOptions);
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,8));

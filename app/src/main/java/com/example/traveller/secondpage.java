@@ -33,6 +33,8 @@ public class secondpage extends AppCompatActivity {
     Button addbtn;
     Button nextpage;
     LinearLayout play;
+    Double lat;
+    Double lon;
     String []states = {"shimla","kolkata","jodhpur","spiti","kerala"};
 
 
