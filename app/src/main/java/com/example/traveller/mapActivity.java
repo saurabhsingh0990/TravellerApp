@@ -43,7 +43,7 @@ public class mapActivity extends AppCompatActivity {
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        getMyLocation(31.1,77.17);
+                        getMyLocation();
                     }
 
                     @Override
@@ -58,7 +58,7 @@ public class mapActivity extends AppCompatActivity {
                 }).check();
     }
 
-    public void getMyLocation(double lati, double longi) {
+    public void getMyLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions

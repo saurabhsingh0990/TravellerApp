@@ -58,6 +58,10 @@ public class weatherStats extends AppCompatActivity {
             futureForecast(place, temper, wind, weatherIcon, date,i+1);
             fiveDayForecast.addView(weatherCard);
         }
+        for(int i = 0 ; i < 3; i++){
+            View weatherCard = getLayoutInflater().inflate(R.layout.weathercard, null);
+            fiveDayForecast.addView(weatherCard);
+        }
 
     }
     void fetchElements(){
