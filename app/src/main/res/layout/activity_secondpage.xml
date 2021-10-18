@@ -6,12 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".secondpage"
     android:orientation="vertical">
-    <EditText
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/colorPrimaryDark">
+    <androidx.appcompat.widget.SearchView
+        android:background="#C8BBE4"
         android:layout_width="350dp"
-        android:hint="Search"
-        android:layout_height="50dp"></EditText>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center" />
+    </FrameLayout>
+
     <ScrollView
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
