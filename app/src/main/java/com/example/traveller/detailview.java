@@ -1,11 +1,17 @@
 package com.example.traveller;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,14 +21,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 public class detailview extends AppCompatActivity {
     public  static  final String Nameofplace = "getting place";
     TextView placeNameHolder;
     FloatingActionButton fabMap ;
     FloatingActionButton fabWeather;
-    GestureDetector gestureDetector;
     ImageView placeimg;
+    NavigationView navigationView;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
+    Toolbar toolbar;
     float xDownM, yDownM;
     float xDownW, yDownW;
     @Override
@@ -36,6 +46,7 @@ public class detailview extends AppCompatActivity {
         fabMap = findViewById(R.id.map);
         fabWeather = findViewById(R.id.weather);
         placeimg = findViewById(R.id.placeimg);
+        navigationDrawer();
         placeimg.setImageResource(getResources().getIdentifier(place, "drawable", getPackageName()));
         fabMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +115,46 @@ public class detailview extends AppCompatActivity {
                     }
                     return false;
                 }
+        });
+    }
+
+    private void navigationDrawer() {
+        navigationView = findViewById(R.id.navmenu);
+        drawerLayout = findViewById(R.id.drawer);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.menu_home:
+                        Toast.makeText(detailview.this, "Opening Home", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_dev:
+                        Toast.makeText(detailview.this, "Opening dev", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_logout:
+                        Toast.makeText(detailview.this, "Opening logout", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_settings:
+                        Toast.makeText(detailview.this, "Opening settings", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_feedback:
+                        Toast.makeText(detailview.this, "Opening feedback", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                }
+
+                return true;
+            }
         });
     }
 

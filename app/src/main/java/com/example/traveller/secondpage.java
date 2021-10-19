@@ -1,10 +1,17 @@
 package com.example.traveller;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.security.identity.NoAuthenticationKeyAvailableException;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,6 +30,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +43,10 @@ public class secondpage extends AppCompatActivity {
     LinearLayout play;
     Double lat;
     Double lon;
+    NavigationView navigationView;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle toggle;
+    Toolbar toolbar;
     String []states = {"shimla","kolkata","jodhpur","spiti","kerala"};
 
 
@@ -43,7 +55,7 @@ public class secondpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondpage);
         play = findViewById(R.id.play);
-
+        navigationDrawer();
         View.OnClickListener btnClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +84,46 @@ public class secondpage extends AppCompatActivity {
 //            @Override
 //            public void onClick(View view) { thirdPage(); }
 //        });
+    }
+
+    private void navigationDrawer() {
+        navigationView = findViewById(R.id.navmenu);
+        drawerLayout = findViewById(R.id.drawer);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.menu_home:
+                        Toast.makeText(secondpage.this, "Opening Home", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_dev:
+                        Toast.makeText(secondpage.this, "Opening dev", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_logout:
+                        Toast.makeText(secondpage.this, "Opening logout", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_settings:
+                        Toast.makeText(secondpage.this, "Opening settings", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.menu_feedback:
+                        Toast.makeText(secondpage.this, "Opening feedback", Toast.LENGTH_SHORT).show();
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                }
+
+                return true;
+            }
+        });
     }
 
     private void thirdPage(String place) {
