@@ -9,17 +9,18 @@
 
 
     <FrameLayout
+
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/colorPrimaryDark">
-        <include
-            layout="@layout/navigationdrawer"/>
+
     <androidx.appcompat.widget.SearchView
         android:background="#C8BBE4"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_gravity="center" />
+
     </FrameLayout>
 
     <ScrollView

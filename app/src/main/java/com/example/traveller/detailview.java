@@ -29,10 +29,6 @@ public class detailview extends AppCompatActivity {
     FloatingActionButton fabMap ;
     FloatingActionButton fabWeather;
     ImageView placeimg;
-    NavigationView navigationView;
-    DrawerLayout drawerLayout;
-    ActionBarDrawerToggle toggle;
-    Toolbar toolbar;
     float xDownM, yDownM;
     float xDownW, yDownW;
     @Override
@@ -46,7 +42,6 @@ public class detailview extends AppCompatActivity {
         fabMap = findViewById(R.id.map);
         fabWeather = findViewById(R.id.weather);
         placeimg = findViewById(R.id.placeimg);
-        navigationDrawer();
         placeimg.setImageResource(getResources().getIdentifier(place, "drawable", getPackageName()));
         fabMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,44 +113,6 @@ public class detailview extends AppCompatActivity {
         });
     }
 
-    private void navigationDrawer() {
-        navigationView = findViewById(R.id.navmenu);
-        drawerLayout = findViewById(R.id.drawer);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.menu_home:
-                        Toast.makeText(detailview.this, "Opening Home", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_dev:
-                        Toast.makeText(detailview.this, "Opening dev", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_logout:
-                        Toast.makeText(detailview.this, "Opening logout", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_settings:
-                        Toast.makeText(detailview.this, "Opening settings", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_feedback:
-                        Toast.makeText(detailview.this, "Opening feedback", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                }
-
-                return true;
-            }
-        });
-    }
 
 }

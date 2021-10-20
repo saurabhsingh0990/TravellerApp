@@ -191,6 +191,5 @@
         app:srcCompat="@drawable/sunny"
         app:maxImageSize="60dp"
         android:layout_gravity="bottom|right" />
-    <include
-        layout="@layout/navigationdrawer"/>
+
 </FrameLayout>

@@ -43,10 +43,7 @@ public class secondpage extends AppCompatActivity {
     LinearLayout play;
     Double lat;
     Double lon;
-    NavigationView navigationView;
-    DrawerLayout drawerLayout;
-    ActionBarDrawerToggle toggle;
-    Toolbar toolbar;
+
     String []states = {"shimla","kolkata","jodhpur","spiti","kerala"};
 
 
@@ -55,7 +52,6 @@ public class secondpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secondpage);
         play = findViewById(R.id.play);
-        navigationDrawer();
         View.OnClickListener btnClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,45 +82,7 @@ public class secondpage extends AppCompatActivity {
 //        });
     }
 
-    private void navigationDrawer() {
-        navigationView = findViewById(R.id.navmenu);
-        drawerLayout = findViewById(R.id.drawer);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.menu_home:
-                        Toast.makeText(secondpage.this, "Opening Home", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_dev:
-                        Toast.makeText(secondpage.this, "Opening dev", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_logout:
-                        Toast.makeText(secondpage.this, "Opening logout", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_settings:
-                        Toast.makeText(secondpage.this, "Opening settings", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                    case R.id.menu_feedback:
-                        Toast.makeText(secondpage.this, "Opening feedback", Toast.LENGTH_SHORT).show();
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
-                }
-
-                return true;
-            }
-        });
-    }
 
     private void thirdPage(String place) {
         Intent third = new Intent(secondpage.this, detailview.class);
