@@ -32,30 +32,35 @@
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"></EditText>
+                android:hint="Name"
+                android:id="@+id/name"></EditText>
             <EditText
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email ID"
-                android:inputType="textEmailAddress"></EditText>
+                android:inputType="textEmailAddress"
+                android:id="@+id/eid"></EditText>
             <EditText
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"></EditText>
+                android:hint="Password"
+                android:id="@+id/password"></EditText>
             <EditText
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone Number"
-                android:inputType="number"></EditText>
+                android:inputType="number"
+                android:id="@+id/pnumber"></EditText>
             <Button
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Create Account !"
-                style="@style/CardView.Dark"></Button>
+                style="@style/CardView.Dark"
+                android:id="@+id/signup"></Button>
         </LinearLayout>
 
     </FrameLayout>

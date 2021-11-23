@@ -54,11 +54,12 @@
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:hint="Username"
+                    android:hint="Email Address"
                     android:textSize="20dp"
+                    android:inputType="textEmailAddress"
                     android:textColor="#85DFD6"></EditText>
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/userpassword"
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
